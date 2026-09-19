@@ -1,23 +1,17 @@
-import { createBrowserRouter } from "react-router";
+import { createHashRouter } from "react-router";
 import { RouterProvider } from "react-router/dom";
 import './App.css'
 import Home from './pages/home';
 import MainLayout from "./layouts/maillayout";
 import Weather from "./pages/weather";
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
     path: "/",
-    element: <MainLayout />,
+    Component: MainLayout,
     children: [
-      {
-        index: true,
-        element: <Home />,
-      },
-      {
-        path: "weather",
-        element: <Weather />,
-      },
+      {index: true, Component: Home},
+      {path: "weather", Component: Weather},
     ],
   },
 ]);
